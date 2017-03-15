@@ -22,9 +22,24 @@ Create GKE Cluster
 
 gcloud container clusters create samplecode3927 --zone europe-west1-b
 
+Deploy NGINX
+
+kubectl create -f deployment.yaml
+
 Method 1:
 
-kubectl create -f samplecode3927_deployment.yaml
+Deploy "web" service with Loadbalancer
+
+kubectl create -f service.yaml
+
+Get external IP of "web" service
+
+kubectl get services
+
+This deployment only creates one Pod so all traffic hit a single NGINX service that we can monitor the logs of.
+Get the pod name:
+
+
 
 
   
