@@ -6,9 +6,15 @@ Method 1:
   Uses GCP TCP Loadbalancer
   https://kubernetes.io/docs/user-guide/load-balancer/#loss-of-client-source-ip-for-external-traffic
   
+  Results in NGINX log Format:
+  
+  
 Method 2:
   Uses GCP HTTP Loadbalancer
   https://cloud.google.com/container-engine/docs/tutorials/http-balancer
+  
+  Results in NGINX log Format:
+  
   
 Setup
 
