@@ -4,7 +4,7 @@ Example deployment with Kubernetes and NGINX to demonstrate preserved source IP
 References:
 Method 1:
   Uses GCP TCP Loadbalancer
-  https://kubernetes.io/docs/user-guide/load-balancer/#loss-of-client-source-ip-for-external-traffic
+  https://kubernetes.io/docs/user-guide/load-balancer/#annotation-to-modify-the-loadbalancer-behavior-for-preservation-of-source-ip
   
   Results in NGINX log Format:
   
