@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: web
+  annotations:
+    service.beta.kubernetes.io/external-traffic: OnlyLocal
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: nginx
+  type: LoadBalancer
