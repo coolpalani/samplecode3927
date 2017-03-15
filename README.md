@@ -61,6 +61,10 @@ kubectl delete deployments samplecode3927-nginx-deployment
 
 Method 2:
 
+Expose the deployment on NodePort
+
+kubectl expose deployment samplecode3927-nginx-deployment --target-port=80 --type=NodePort
+
 Create ingress object
 
 kubectl create -f ingress.yaml
@@ -85,6 +89,6 @@ e.g: samplecode3927-nginx-deployment-1935786584-r86pm
 
 kubectl logs samplecode3927-nginx-deployment-1935786584-r86pm
 
-
+10.132.0.5 - - [15/Mar/2017:11:22:55 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.51.0" "<REQUESTORS IP>, <IP CURLed>"
   
   
