@@ -1,13 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: samplecode3927-nginx-deployment
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: nginx
+        app: samplecode3927-nginx
     spec:
       containers:
       - name: nginx
