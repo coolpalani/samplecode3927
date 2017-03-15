@@ -61,8 +61,29 @@ kubectl delete deployments samplecode3927-nginx-deployment
 
 Method 2:
 
+Create ingress object
 
+kubectl create -f ingress.yaml
 
+Wait for a public IP to be assigned:
+
+kubectl get ingress samplecode3927-ingress --watch
+
+Even after the IP is assigned, it can take a few minutes for the full path to be setup.
+
+Hit the NGINX service:
+
+curl <samplecode3927-web external IP>
+
+If you do not get the welcome to NGINX page, wait 30 seconds and try again
+
+View the NGINX logs
+
+kubectl get pods
+
+e.g: samplecode3927-nginx-deployment-1935786584-r86pm
+
+kubectl logs samplecode3927-nginx-deployment-1935786584-r86pm
 
 
   
