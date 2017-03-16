@@ -1,19 +1,14 @@
 # samplecode3927
 Example deployment with Kubernetes and NGINX to demonstrate preserved source IP
 
-## References:
 ## Method 1:
   * Uses GCP TCP Loadbalancer
   * https://kubernetes.io/docs/user-guide/load-balancer/#annotation-to-modify-the-loadbalancer-behavior-for-preservation-of-source-ip
   
-  Results in NGINX log Format:
-  
-  
+
 ## Method 2:
   * Uses GCP HTTP Loadbalancer
   * https://cloud.google.com/container-engine/docs/tutorials/http-balancer
-  
-  Results in NGINX log Format:
   
   
 ### Setup
@@ -125,6 +120,6 @@ kubectl logs samplecode3927-nginx-deployment-1935786584-r86pm
 #### Output should look like
 
 ```
-10.132.0.5 - - [15/Mar/2017:11:22:55 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.51.0" "<REQUESTORS IP>, <IP CURLed>"
+<Kubernetes IP> - - [15/Mar/2017:11:22:55 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.51.0" "<REQUESTORS IP>, <"
 ``` 
   
