@@ -12,15 +12,17 @@ Example deployment with Kubernetes and NGINX to demonstrate preserved source IP
 
 ---
 
-## Method 1
-
-### Setup
-
-Create GKE Cluster
+### You will need a GKE cluster to run these examples.
 
 ```
 gcloud container clusters create samplecode3927 --zone europe-west1-b
 ```
+
+---
+
+## Method 1
+
+### Setup
 
 Deploy NGINX
 
