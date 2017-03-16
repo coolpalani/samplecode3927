@@ -22,7 +22,7 @@ gcloud container clusters create samplecode3927 --zone europe-west1-b
 
 ---
 
-## Method 1
+## Method 1: Using Network Load Balancer - NLB (TCP)
 
 ### Setup
 
@@ -81,7 +81,7 @@ kubectl delete deployments samplecode3927-nginx-deployment
 
 ---
 
-## Method 2
+## Method 2:  Using Google Cloud Load Balancer - GCLB (HTTP/HTTPS)  
 
 ### Setup
 
