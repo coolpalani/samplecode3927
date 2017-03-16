@@ -46,13 +46,15 @@ Hit the NGINX service:
 curl <samplecode3927-web external IP>
 ```
 
-View the NGINX logs
+To view the NGINX logs, first get the Pod name
 
 ```
 kubectl get pods -l app=samplecode3927-nginx
 ```
 
 e.g: samplecode3927-nginx-deployment-1935786584-r86pm
+
+Then get the logs for that Pod
 
 ```
 kubectl logs samplecode3927-nginx-deployment-1935786584-r86pm
@@ -127,13 +129,15 @@ curl <samplecode3927-web external IP>
 If you do not get the welcome to NGINX page, wait 30 seconds and try again
 
 
-View the NGINX logs
+To view the NGINX logs, first get the Pod name
 
 ```
 kubectl get pods -l app=samplecode3927-nginx
 ```
 
 e.g: samplecode3927-nginx-deployment-1935786584-r86pm
+
+Then get the logs for that Pod
 
 ```
 kubectl logs samplecode3927-nginx-deployment-1935786584-r86pm
