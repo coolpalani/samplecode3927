@@ -9,9 +9,6 @@ Packet walk and detailed explanation here
 
 * https://www.youtube.com/watch?v=y2bhV81MfKQ&t=2080s
 
-#### There is a tradeoff to be made when selecting this feature related to balanced load balancing
-#### Please review the whole video for a detailed explanation
-
 ---
 
 ### You will need a GKE cluster to run these examples
@@ -23,8 +20,6 @@ gcloud container clusters create samplecode3927 --zone europe-west1-b
 ---
 
 ## Method 1: Using Network Load Balancer - NLB (TCP)
-
-### Setup
 
 Deploy NGINX
 
@@ -67,7 +62,7 @@ kubectl logs samplecode3927-nginx-deployment-1935786584-r86pm
 Output should look like:
 
 ```
-<$REMOTE_IP> - - [15/Mar/2017:10:42:44 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.51.0" "-"
+<REMOTE_IP> - - [15/Mar/2017:10:42:44 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.51.0" "-"
 ```
 
 #### Cleanup
@@ -83,14 +78,6 @@ kubectl delete deployments samplecode3927-nginx-deployment
 
 ## Method 2:  Using Google Cloud Load Balancer - GCLB (HTTP/HTTPS)  
 
-### Setup
-
-Create GKE Cluster
-
-```
-gcloud container clusters create samplecode3927 --zone europe-west1-b
-```
-
 Deploy NGINX
 
 ```
@@ -98,6 +85,8 @@ kubectl create -f deployment.yaml
 ```
 
 Deploy service exposing on NodePorts
+Note:   Local Only annotation is optional in this manifest with regards to preserving source IP.
+        Source IP will be carried in X-Forward-For field regardless.
 
 ```
 kubectl create -f service-nodeport.yaml
@@ -144,7 +133,7 @@ kubectl logs samplecode3927-nginx-deployment-1935786584-r86pm
 #### Output should look like
 
 ```
-
+<Google Internal IP> - - [16/Mar/2017:14:51:51 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.51.0" "<Remote IP>"
 ```
 
 #### Cleanup
