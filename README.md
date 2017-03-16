@@ -4,13 +4,15 @@ Example deployment with Kubernetes and NGINX to demonstrate preserved source IP
 ## Method 1:
   * Uses GCP TCP Loadbalancer
   * https://kubernetes.io/docs/user-guide/load-balancer/#annotation-to-modify-the-loadbalancer-behavior-for-preservation-of-source-ip
-  
+
 
 ## Method 2:
   * Uses GCP HTTP Loadbalancer
   * https://cloud.google.com/container-engine/docs/tutorials/http-balancer
-  
+
 ---
+
+### Method 1
 
 ## Setup
 
@@ -25,10 +27,6 @@ Deploy NGINX
 ```
 kubectl create -f deployment.yaml
 ```
-
----
-
-### Method 1
 
 Deploy service with Loadbalancer
 
@@ -71,14 +69,32 @@ Output should look like:
 ```
 kubectl delete services samplecode3927-web
 ```
-
-If you wish to carry on and try Method 2 you can skip this next step
-
 ```
 kubectl delete deployments samplecode3927-nginx-deployment
 ```
 
 ### Method 2
+
+## Setup
+
+Create GKE Cluster
+
+```
+gcloud container clusters create samplecode3927 --zone europe-west1-b
+```
+
+Deploy NGINX
+
+```
+kubectl create -f deployment.yaml
+```
+
+Create config map for NGINX customer config
+
+```
+kubectl create configmap nginxconfigmap --from-file=default.conf
+configmap "nginxconfigmap" created
+```
 
 Deploy service exposing on NodePorts
 
@@ -126,5 +142,18 @@ kubectl logs samplecode3927-nginx-deployment-1935786584-r86pm
 
 ```
 <Kubernetes IP> - - [15/Mar/2017:11:22:55 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.51.0" "<REQUESTORS IP>, <"
-``` 
-  
+```
+
+#### Cleanup
+
+```
+kubectl delete services samplecode3927-web
+```
+
+```
+kubectl delete ingress samplecode3927-ingress
+```
+
+```
+kubectl delete deployments samplecode3927-nginx-deployment
+```
