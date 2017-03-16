@@ -12,7 +12,7 @@ Example deployment with Kubernetes and NGINX to demonstrate preserved source IP
 
 ---
 
-### You will need a GKE cluster to run these examples.
+### You will need a GKE cluster to run these examples
 
 ```
 gcloud container clusters create samplecode3927 --zone europe-west1-b
@@ -148,7 +148,7 @@ kubectl logs samplecode3927-nginx-deployment-1935786584-r86pm
 #### Output should look like
 
 ```
-<Kubernetes IP> - - [15/Mar/2017:11:22:55 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.51.0" "<REQUESTORS IP>, <"
+<----> - - [15/Mar/2017:11:22:55 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.51.0" "<$REMOTE_IP>, <---->"
 ```
 
 #### Cleanup
