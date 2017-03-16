@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: samplecode3927-web
+  name: samplecode3927-web-lb
   annotations:
     service.beta.kubernetes.io/external-traffic: OnlyLocal
 spec:

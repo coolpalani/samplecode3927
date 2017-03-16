@@ -1,14 +1,16 @@
 # samplecode3927
 Example deployment with Kubernetes and NGINX to demonstrate preserved source IP
 
-## Method 1:
-  * Uses GCP TCP Loadbalancer
-  * https://kubernetes.io/docs/user-guide/load-balancer/#annotation-to-modify-the-loadbalancer-behavior-for-preservation-of-source-ip
+## Only Local
 
+Works with both NLB and GCLB
 
-## Method 2:
-  * Uses GCP HTTP Loadbalancer
-  * https://cloud.google.com/container-engine/docs/tutorials/http-balancer
+Packet walk and detailed explanation here
+
+* https://www.youtube.com/watch?v=y2bhV81MfKQ&t=2080s
+
+#### There is a tradeoff to be made when selecting this feature related to balanced load balancing
+#### Please review the whole video for a detailed explanation
 
 ---
 
@@ -71,7 +73,7 @@ Output should look like:
 #### Cleanup
 
 ```
-kubectl delete services samplecode3927-web
+kubectl delete services samplecode3927-web-lb
 ```
 ```
 kubectl delete deployments samplecode3927-nginx-deployment
@@ -93,12 +95,6 @@ Deploy NGINX
 
 ```
 kubectl create -f deployment.yaml
-```
-
-Create config map for NGINX customer config
-
-```
-kubectl create configmap nginxconfigmap --from-file=default.conf
 ```
 
 Deploy service exposing on NodePorts
@@ -148,13 +144,13 @@ kubectl logs samplecode3927-nginx-deployment-1935786584-r86pm
 #### Output should look like
 
 ```
-<----> - - [15/Mar/2017:11:22:55 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.51.0" "<$REMOTE_IP>, <---->"
+
 ```
 
 #### Cleanup
 
 ```
-kubectl delete services samplecode3927-web
+kubectl delete services samplecode3927-web-np
 ```
 
 ```

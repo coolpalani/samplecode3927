@@ -4,5 +4,5 @@ metadata:
   name: samplecode3927-ingress
 spec:
   backend:
-    serviceName: samplecode3927-nginx-deployment
+    serviceName: samplecode3927-web-np
     servicePort: 80
