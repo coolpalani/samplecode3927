@@ -12,9 +12,9 @@ Example deployment with Kubernetes and NGINX to demonstrate preserved source IP
 
 ---
 
-### Method 1
+## Method 1
 
-## Setup
+### Setup
 
 Create GKE Cluster
 
@@ -73,9 +73,11 @@ kubectl delete services samplecode3927-web
 kubectl delete deployments samplecode3927-nginx-deployment
 ```
 
-### Method 2
+---
 
-## Setup
+## Method 2
+
+### Setup
 
 Create GKE Cluster
 
