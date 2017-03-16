@@ -10,8 +10,9 @@ Example deployment with Kubernetes and NGINX to demonstrate preserved source IP
   * Uses GCP HTTP Loadbalancer
   * https://cloud.google.com/container-engine/docs/tutorials/http-balancer
   
-  
-### Setup
+---
+
+## Setup
 
 Create GKE Cluster
 
@@ -24,6 +25,8 @@ Deploy NGINX
 ```
 kubectl create -f deployment.yaml
 ```
+
+---
 
 ### Method 1
 
