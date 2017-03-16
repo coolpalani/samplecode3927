@@ -49,7 +49,7 @@ curl <samplecode3927-web external IP>
 View the NGINX logs
 
 ```
-kubectl get pods
+kubectl get pods -l app=samplecode3927-nginx
 ```
 
 e.g: samplecode3927-nginx-deployment-1935786584-r86pm
@@ -61,7 +61,7 @@ kubectl logs samplecode3927-nginx-deployment-1935786584-r86pm
 Output should look like:
 
 ```
-<REQUESTORS IP> - - [15/Mar/2017:10:42:44 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.51.0" "-"
+<$REMOTE_IP> - - [15/Mar/2017:10:42:44 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.51.0" "-"
 ```
 
 #### Cleanup
@@ -95,7 +95,6 @@ Create config map for NGINX customer config
 
 ```
 kubectl create configmap nginxconfigmap --from-file=default.conf
-configmap "nginxconfigmap" created
 ```
 
 Deploy service exposing on NodePorts
@@ -131,7 +130,7 @@ If you do not get the welcome to NGINX page, wait 30 seconds and try again
 View the NGINX logs
 
 ```
-kubectl get pods
+kubectl get pods -l app=samplecode3927-nginx
 ```
 
 e.g: samplecode3927-nginx-deployment-1935786584-r86pm
