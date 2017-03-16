@@ -25,12 +25,12 @@ Deploy NGINX
 kubectl create -f deployment.yaml
 ```
 
-### Method 1:
+### Method 1
 
 Deploy "web" service with Loadbalancer
 
 ```
-kubectl create -f service.yaml
+kubectl create -f service-lb.yaml
 ```
 
 Get external IP of "web" service
@@ -75,12 +75,12 @@ If you wish to carry on and try Method 2 you can skip this next step
 kubectl delete deployments samplecode3927-nginx-deployment
 ```
 
-### Method 2:
+### Method 2
 
 Expose the deployment on NodePort
 
 ```
-kubectl expose deployment samplecode3927-nginx-deployment --target-port=80 --type=NodePort
+kubectl create -f service-nodeport.yaml
 ```
 
 Create ingress object
@@ -89,7 +89,7 @@ Create ingress object
 kubectl create -f ingress.yaml
 ```
 
-Wait for a public IP to be assigned:
+Wait for a public IP to be assigned
 
 ```
 kubectl get ingress samplecode3927-ingress --watch
@@ -97,7 +97,7 @@ kubectl get ingress samplecode3927-ingress --watch
 
 Even after the IP is assigned, it can take a few minutes for the full path to be setup.
 
-Hit the NGINX service:
+Hit the NGINX service
 
 ```
 curl <samplecode3927-web external IP>
